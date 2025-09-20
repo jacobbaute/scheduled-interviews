@@ -4,7 +4,7 @@ import './InterviewSchedule.css'
 import "react-datepicker/dist/react-datepicker.css";
 
 function InterviewSchedule() {
-  const [startDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState('');
   const [interviews, setInterviews] = useState([]);
   const [numberOfInterviews, setNumberOfInterviews] = useState(0);
@@ -60,6 +60,7 @@ function InterviewSchedule() {
       <h1>Interview Schedule Assistant</h1>
       <h2>Select a date to continue:</h2>
       <DatePicker selected={startDate} onChange={(date) => {
+        setStartDate(date);
         setSelectedDate(date.toDateString());
         getInterviews(date.toISOString());
       }} />
